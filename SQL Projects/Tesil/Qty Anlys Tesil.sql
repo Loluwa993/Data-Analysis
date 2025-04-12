@@ -109,13 +109,3 @@ select * from orders;
 	group by c.business_sector
 	order by 1 desc;
 
-	
-
-create table #clientrfxorders
-as
-
-select c.client_name, count(r.rfx_id), count(o.order_id), sum(r.rfx_value), sum(o.order_value)
-from clients c
-join rfx r on c.client_id = r.client_id
-join orders o on c.client_id = o.client_id
-group by c.client_name;
